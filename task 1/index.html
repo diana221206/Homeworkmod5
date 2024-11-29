@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            background-color: #fbf3e8;
+            padding: 20px;
+        }
+        
+        .login-container {
+            padding: 20px;
+            max-width: 400px;
+            margin: 15% auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            background-color: #e0e0e0;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease-in;
+        }
+        
+        button:hover {
+            background-color: #cccccc;
+        }
+        
+        #message {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .remember_div {
+            display: flex;
+            flex-direction: row;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <form id="loginForm">
+            <label for="login">Your login:</label>
+            <input type="text" id="login" name="login">
+            <label for="password">Your password:</label>
+            <input type="password" id="password" name="password">
+            <div class="remember_div">
+                <label for="rememberMe">Remember me</label>
+                <input type="checkbox" id="rememberMe" name="rememberMe">
+            </div>
+            <button type="submit">Sign In</button>  
+        </form>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        $('#loginForm').submit(function(event) {
+            event.preventDefault(); // Предотвращение стандартной отправки формы
+
+            var login = $('#login').val(); // Получение значения поля "login"
+            var rememberMe = $('#rememberMe').is(':checked'); // Получение состояния чекбокса "Remember me"
+
+            var message = 'Привет, ' + login + '! Я тебя '; // Формирование сообщения
+            message += rememberMe ? 'запомнил' : 'не запомнил'; // Добавление информации о запоминании
+
+            $('#message').text(message);
+        });
+    </script>
+</body>
+</html>

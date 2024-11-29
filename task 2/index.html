@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fbf3e8;
+        }
+
+        .form-container {
+            width: 350px;
+        }
+
+        .columns {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #e0e0e0;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 368px;
+            transition: all 0.3s ease-in;
+        }
+        
+        button:hover {
+            background-color: #cccccc;
+        }
+
+        .message {
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="registration-form">
+            <div class="columns">
+                <div class="row">
+                    <label for="email">Your email:</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="login">Your login:</label>
+                    <input type="text" id="login" name="login" required>
+                </div>
+                <div class="row">
+                    <label for="password">Your password:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <label for="repeat-password">Repeat password:</label>
+                    <input type="password" id="repeat-password" name="repeat-password" required>
+                </div> 
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="message"></div>
+    </div>
+
+    <script>
+            $('#registration-form').on('submit', function (e) {
+                e.preventDefault();
+
+                let email = $('#email').val();
+                let password = $('#password').val();
+                let repeatPassword = $('#repeat-password').val();
+
+                if (password !== repeatPassword) {
+                    $('.message').text('Пароли не совпадают попробуйте снова');
+                    return;
+                }
+
+                $('.message').text(`На почту ${email} отправлено письмо с подтверждением.`);
+            });
+    </script>
+</body>
+</html>
