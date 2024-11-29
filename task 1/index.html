@@ -80,14 +80,12 @@
 
     <script>
         $('#loginForm').submit(function(event) {
-            event.preventDefault(); // Предотвращение стандартной отправки формы
+            event.preventDefault(); 
 
-            var login = $('#login').val(); // Получение значения поля "login"
-            var rememberMe = $('#rememberMe').is(':checked'); // Получение состояния чекбокса "Remember me"
-
-            var message = 'Привет, ' + login + '! Я тебя '; // Формирование сообщения
-            message += rememberMe ? 'запомнил' : 'не запомнил'; // Добавление информации о запоминании
-
+            var login = $('#login').val(); 
+            var rememberMe = $('#rememberMe').is(':checked'); 
+            var message = 'Привет, ' + login + '! Я тебя '; 
+            message += rememberMe ? 'запомнил' : 'не запомнил'; 
             $('#message').text(message);
         });
     </script>
